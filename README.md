@@ -1,8 +1,5 @@
-# .config files
-
-//////////////////////////////////////////////////////////////////////
-// All .config files for my current i3-wm setup.                    //
-//////////////////////////////////////////////////////////////////////
+# .config files for my current i3-wm setup.
+                  
 - config 
   i3 config file with color settings, startup execs, keybindings etc.
   
