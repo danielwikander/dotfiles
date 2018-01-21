@@ -1,3 +1,3 @@
-# i3rice
+# .config files
 
-All .config files for my i3-wm rice.
+All .config files for my current i3-wm setup.
