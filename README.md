@@ -11,8 +11,6 @@
   
 - soundfix.sh
   Bash script that fixes audio noise issue from sounddevice driver.
-  
---scripts
 
 - cryptoi3block
   A crypto price displayer for i3blocks.
