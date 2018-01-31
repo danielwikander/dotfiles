@@ -4,19 +4,19 @@
          
 - i3
   
-  i3 folder with config 
+         i3 folder with config.
   
 - polybar
   
-  polybar folder with polybar config 
+         polybar folder with polybar config. 
   
 - compton.conf
 
-  compton configuration file with shadow and transparency settings.
+          compton configuration file with shadow and transparency settings.
   
 - soundfix.sh
 
-  Bash script that fixes audio noise issue from sounddevice driver.
+          Bash script that fixes audio noise issue from sounddevice driver.
 
 - Scripts
 
