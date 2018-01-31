@@ -25,5 +25,5 @@
            A crypto price displayer for i3blocks.
   
          - shutdown_menu
-
            A shutdown menu for i3blocks.
+           Uses rofi, so it works regardless of i3blocks icon.
