@@ -1,5 +1,7 @@
 # .config files for my current i3-wm setup.        
-![Empty](screenshots/1.jpg?raw=true "Empty")
+![Empty](screenshots/1.png?raw=true "Empty")
+![Google](screenshots/2.png?raw=true "Google")
+![Idea](screenshots/3.png?raw=true "Idea")
          
 - i3
   
