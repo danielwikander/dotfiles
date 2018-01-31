@@ -1,16 +1,18 @@
 # .config files for my current i3-wm setup.
-                  
-- config 
-
-  i3 config file with color settings, startup execs, keybindings etc.
+         
+         
+         
+- i3
+  
+  i3 folder with config 
+  
+- polybar
+  
+  polybar folder with polybar config 
   
 - compton.conf
 
   compton configuration file with shadow and transparency settings.
-  
-- i3blocks.sh
-
-  i3blocks configuration file.
   
 - soundfix.sh
 
