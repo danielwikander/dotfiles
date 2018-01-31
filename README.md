@@ -21,7 +21,6 @@
 - Scripts
 
          - cryptoi3block
-
            A crypto price displayer for i3blocks.
   
          - shutdown_menu
