@@ -18,10 +18,12 @@
 
   Bash script that fixes audio noise issue from sounddevice driver.
 
-- cryptoi3block
+- Scripts
 
-  A crypto price displayer for i3blocks.
+         - cryptoi3block
+
+           A crypto price displayer for i3blocks.
   
-- shutdown_menu
+         - shutdown_menu
 
-  A shutdown menu for i3blocks.
+           A shutdown menu for i3blocks.
