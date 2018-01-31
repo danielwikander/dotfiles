@@ -1,6 +1,5 @@
-# .config files for my current i3-wm setup.
-         
-         
+# .config files for my current i3-wm setup.        
+![Empty](screenshots/1.jpg?raw=true "Empty")
          
 - i3
   
