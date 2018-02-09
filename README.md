@@ -3,7 +3,7 @@
 ![Idea](screenshots/3.png?raw=true "Idea")
          
 - i3
-  
+
          i3 folder with config.
   
 - polybar
@@ -24,5 +24,5 @@
            A crypto price displayer for i3blocks.
   
          - shutdown_menu
-           A shutdown menu for i3blocks.
+           A shutdown menu config.
            Uses rofi, so it works regardless of i3blocks icon.
