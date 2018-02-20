@@ -1,0 +1,220 @@
+;#///////////////////////////////////////////////////////////////////////////#
+;#                                                                           #
+;#                                 Polybar						     		 #
+;# 								  .dotfile                              	 #
+;#                                 2018-02-20                                #
+;#                                                                           #
+;#///////////////////////////////////////////////////////////////////////////#
+
+[colors]
+; From Xresources
+; background = ${xrdb:color0}
+; foreground = ${xrdb:color7}
+primary = ${xrdb:color3}
+secondary = ${xrdb:color5}
+
+; Static
+background = #E644403d
+background-alt = #444
+foreground = #dfdfdf
+foreground-alt = #232c34
+alert = #bd2c40
+bluebg = #7cd0d6
+urgbg = #fc6a6a
+
+[bar/example]
+;monitor = ${env:MONITOR:HDMI-1}
+width = 1880
+height = 25
+offset-x = 20
+offset-y = 20
+;radius = 6.0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 0
+line-color = #f00
+border-size = 2
+border-color = #e8f2ef
+
+padding-left = 0
+padding-right = 1
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = terminus:pixelsize=14;1
+font-1 = unifont:fontformat=truetype:size=10:antialias=false;0
+font-2 = siji:pixelsize=12;1
+
+modules-left = i3
+modules-center = date
+modules-right = volume memory cpu wlan battery
+
+tray-position = right
+tray-padding = 2
+;tray-transparent = true
+;tray-background = #0063ff
+
+wm-restack = i3
+override-redirect = true
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+
+[module/i3]
+type = internal/i3
+
+format = <label-state> <label-mode>
+format-spacing = 0
+
+label-focused = %index%
+label-focused-padding = 2
+label-focused-margin = 0
+label-focused-font = 3
+label-focused-foreground = #E644403d
+label-focused-background = #e8f2ef
+label-focused-overline = #148ebe
+label-focused-underline = #148ebe
+
+label-unfocused = %index%
+label-unfocused-padding = 2
+label-unfocused-margin = 0
+label-unfocused-background = #E644403d
+label-unfocused-foreground = #e8f2ef
+label-unfocused-overline = #c5c5c5
+label-unfocused-underline = #c5c5c5
+label-unfocused-font = 3
+
+label-urgent = %index%
+label-urgent-padding = 2
+label-urgent-margin = 0
+label-urgent-font = 3
+label-urgent-background = #F2777A
+
+label-visible = %index%
+label-visible-padding = 2
+label-visible-margin = 0
+label-visible-font = 3
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = "CPU"
+format-prefix-foreground = #e8f2ef
+format-underline = #f90000
+label = %percentage:2%%
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = "MEM "
+format-prefix-foreground = #e8f2ef
+format-underline = #4bffdc
+label = %percentage_used%%
+
+[module/wlan]
+type = internal/network
+interface = wlo1
+interval = 3.0
+
+format-connected = <ramp-signal> <label-connected>
+format-connected-underline = #9f78e1
+label-connected = %essid%
+
+format-disconnected =
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+ramp-signal-foreground = #e8f2ef
+
+[module/date]
+type = internal/date
+interval = 5
+
+date = "%Y-%m-%d"
+date-alt = "%Y-%m-%d"
+
+time = %H:%M
+time-alt = %H:%M:%S
+
+format-prefix-foreground = #e8f2ef
+format-underline = #0a6cf5
+
+label = %date% %time%
+
+[module/volume]
+type = internal/volume
+
+format-volume = <label-volume> <bar-volume>
+label-volume = VOL
+label-volume-foreground = ${root.foreground}
+
+format-muted-prefix = " "
+format-muted-foreground = #e8f2ef
+label-muted = sound muted
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #e8f2ef
+bar-volume-foreground-1 = #e8f2ef
+bar-volume-foreground-2 = #e8f2ef
+bar-volume-foreground-3 = #e8f2ef
+bar-volume-foreground-4 = #e8f2ef
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = ADP1
+full-at = 98
+
+format-charging = <animation-charging> <label-charging>
+format-charging-underline = #ffb52a
+
+format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-underline = ${self.format-charging-underline}
+
+format-full-prefix = " "
+format-full-prefix-foreground = #e8f2ef
+format-full-underline = ${self.format-charging-underline}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-foreground = #e8f2ef
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-foreground = #e8f2ef
+animation-charging-framerate = 750
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+
+[global/wm]
+margin-top = 10
+margin-bottom = 10
+
+; vim:ft=dosini
