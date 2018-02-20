@@ -14,15 +14,13 @@
 
          Compton configuration file with shadow and transparency settings.
   
-- soundfix.sh
-
-         Bash script that fixes audio noise issue from sounddevice driver.
-
-- Scripts
-
-         - cryptoi3block
-           A crypto price displayer for i3blocks.
+- scripts
+                  
+         Some scripts that I personally use, you can ignore them if you wish.
   
          - shutdown_menu
            A shutdown menu config.
            Uses rofi, so it works regardless of i3blocks icon.
+           
+         - soundfix.sh
+           A bash script that fixes audio noise issue from sounddevice driver.
