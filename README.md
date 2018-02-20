@@ -4,15 +4,15 @@
          
 - i3
 
-         i3 folder with config.
+         i3 folder with i3 config.
   
 - polybar
   
          Polybar folder with polybar config. 
   
-- compton.conf
+- compton
 
-         Compton configuration file with shadow and transparency settings.
+         Compton folder with compton config.
   
 - scripts
                   
