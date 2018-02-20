@@ -1,0 +1,240 @@
+#////////////////////////////////////////////////////////////////////////////#
+#                                                                            #
+#                                 i3                                         # 
+#                                .dotfile                                    #
+#                                 2018-02-19                                 #
+#                                                                            #
+#////////////////////////////////////////////////////////////////////////////#
+
+# Sets modkey alt 
+set $mod Mod1
+
+# Font for window titles.
+font pango:terminus 10
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec i3-sensible-terminal
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start rofi (program launcher)
+bindsym $mod+d exec rofi -show run
+
+# change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+odiaeresis focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+odiaeresis move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# sets workspaces
+set $workspace1 "1:Terminals"
+set $workspace2 "2:Web"
+set $workspace3 "3:Editor"
+set $workspace4 "4:Dev"
+set $workspace5 "5:Other"
+set $workspace6 "6:Other"
+set $workspace7 "7:Other"
+set $workspace8 "8:Other"
+set $workspace9 "9:Other"
+set $workspace10 "10:Other"
+
+# switch to workspace
+bindsym $mod+1 workspace $workspace1
+bindsym $mod+2 workspace $workspace2
+bindsym $mod+3 workspace $workspace3
+bindsym $mod+4 workspace $workspace4
+bindsym $mod+5 workspace $workspace5
+bindsym $mod+6 workspace $workspace6
+bindsym $mod+7 workspace $workspace7
+bindsym $mod+8 workspace $workspace8
+bindsym $mod+9 workspace $workspace9
+bindsym $mod+0 workspace $workspace10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $workspace1
+bindsym $mod+Shift+2 move container to workspace $workspace2
+bindsym $mod+Shift+3 move container to workspace $workspace3
+bindsym $mod+Shift+4 move container to workspace $workspace4
+bindsym $mod+Shift+5 move container to workspace $workspace5
+bindsym $mod+Shift+6 move container to workspace $workspace6
+bindsym $mod+Shift+7 move container to workspace $workspace7
+bindsym $mod+Shift+8 move container to workspace $workspace8
+bindsym $mod+Shift+9 move container to workspace $workspace9
+bindsym $mod+Shift+0 move container to workspace $workspace10
+
+# startup executions
+exec --no-startup-id gnome-terminal $workspace1
+exec --no-startup-id chromium-browser $workspace2
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# shutdown menu
+bindsym $mod+Shift+e exec $HOME/.config/i3/scripts/shutdown_menu -c
+
+# resize window (you can also use the mouse)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym odiaeresis resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+hide_edge_borders both
+
+# Set colors from Xresources
+# Change 'color7' and 'color2' to whatever colors you want i3 to use 
+# from the generated scheme.
+# NOTE: The '#f0f0f0' in the lines below is the color i3 will use if
+# it fails to get colors from Xresources.
+set_from_resource $fg i3wm.color7 #f0f0f0
+set_from_resource $bg i3wm.color2 #f0f0f0
+set $bordercolor #e8f2ef
+set $urgentcolor #F2777A
+
+# class                 border           backgr. text indicator child_border
+client.focused          $bordercolor     $bg     $fg  $bg       $bg
+client.focused_inactive $bordercolor     $bg     $fg  $bg       $bg
+client.unfocused        $bordercolor     $bg     $fg  $bg       $bg
+client.urgent           $urgentcolor     $bg     $fg  $bg       $bg
+client.placeholder      $bordercolor     $bg     $fg  $bg       $bg
+
+client.background       $bg
+
+# INVISIBLE BAR FOR POLYBAR POSITIONING ONLY
+# Because of unfortunate limitations with i3 and polybar an invisible i3bar is needed
+# for the i3 windows to align with the polybar height.
+bar {
+    height 50
+    mode dock
+    position top
+    i3bar_command i3bar -t
+     colors {
+        # Whole color settings
+        background #001e1e1e
+        statusline #001e1e1e
+        separator  #001e1e1e
+
+        # Type             border  background font
+        focused_workspace  #001e1e1e #001e1e1e #001e1e1e
+        active_workspace   #001e1e1e #001e1e1e #001e1e1e
+        inactive_workspace #001e1e1e #001e1e1e #001e1e1e
+        urgent_workspace   #001e1e1e #001e1e1e #001e1e1e
+     }
+}
+
+# POLYBAR
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
+# CUSTOM STUFF
+# Locks the screen
+bindsym $mod+Shift+x exec i3lock --color 475263
+
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+# Screen brightness controls with notification
+bindsym XF86MonBrightnessUp exec "light -A 10; notify-send 'brightness up'" 
+bindsym XF86MonBrightnessDown exec "light -U 10; notify-send 'brightness down'" 
+
+# Touchpad controls 
+exec_always --no-startup-id synclient VertEdgeScroll=0 HorizTwoFingerScroll=1 NaturalScrolling=1 VertScrollDelta=-120 HorizScrollDelta=-120 PalmDetect=1
+# toggle touchpad
+# bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh
+
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+# Startup
+exec_always --no-startup-id /home/daniel/.screenlayout/home2.sh
+exec_always --no-startup-id /usr/local/bin/soundfix.sh
+exec_always --no-startup-id feh --bg-scale /home/daniel/Pictures/wallpapers/lakehouse.jpg
+exec_always --no-startup id exec wpg
+exec_always --no-startup-id home/daniel/.config/wpg/wp-init.sh
+#exec --no-startup-id nm-applet
+
+# Sets keyboard layout SE/US
+bindsym $mod+n exec "setxkbmap se"
+bindsym $mod+m exec "setxkbmap us"
+
+# Compton
+exec_always compton --config ~/.config/compton.conf -b -c
+
+# Gaps!
+gaps inner 10
+gaps outer 10
+
+# Removes titlebar for gaps to work
+for_window [class="^.*"] border pixel 2
+
+
