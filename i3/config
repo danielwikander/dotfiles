@@ -176,15 +176,15 @@ bar {
     i3bar_command i3bar -t
      colors {
         # Whole color settings
-        background #001e1e1e
-        statusline #001e1e1e
-        separator  #001e1e1e
+        background #00000000
+        statusline #00000000
+        separator  #00000000
 
         # Type             border  background font
-        focused_workspace  #001e1e1e #001e1e1e #001e1e1e
-        active_workspace   #001e1e1e #001e1e1e #001e1e1e
-        inactive_workspace #001e1e1e #001e1e1e #001e1e1e
-        urgent_workspace   #001e1e1e #001e1e1e #001e1e1e
+        focused_workspace  #00000000 #00000000 #00000000
+        active_workspace   #00000000 #00000000 #00000000
+        inactive_workspace #00000000 #00000000 #00000000
+        urgent_workspace   #00000000 #00000000 #00000000
      }
 }
 
@@ -218,7 +218,7 @@ bindsym XF86AudioPrev exec playerctl previous
 # Startup
 exec_always --no-startup-id /home/daniel/.screenlayout/home2.sh
 exec_always --no-startup-id /usr/local/bin/soundfix.sh
-exec_always --no-startup-id feh --bg-scale /home/daniel/Pictures/wallpapers/lakehouse.jpg
+exec_always --no-startup-id feh --bg-scale /home/daniel/Pictures/wallpapers/sky.png
 exec_always --no-startup id exec wpg
 exec_always --no-startup-id home/daniel/.config/wpg/wp-init.sh
 #exec --no-startup-id nm-applet
