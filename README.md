@@ -2,29 +2,24 @@
 ![Empty](screenshots/1.png?raw=true "Empty")
 ![Terminals](screenshots/2.png?raw=true "Terminals")
          
-- i3
+This setup uses: 
+
+[i3-gaps](https://github.com/Airblader/i3)
+
+[polybar](https://github.com/jaagr/polybar)
+
+[rofi](https://github.com/DaveDavenport/rofi)
+
+[compton](https://github.com/chjj/compton)
+
+         This repository includes the following content :
 
          i3 folder with i3 config.
-  
-- polybar
-  
          Polybar folder with polybar config. 
-  
-- compton
-
          Compton folder with compton config.
-         
-- rofi
-         
          rofi folder with rofi config.
-  
-- scripts
-                  
-         Some scripts that I personally use, you can ignore them if you wish.
-  
-         - shutdown_menu
-           A shutdown menu config.
-           Uses rofi, so it works regardless of i3blocks icon.
-           
-         - soundfix.sh
-           A bash script that fixes audio noise issue from sounddevice driver.
+         
+         The scripts folder contains some scripts that
+         I personally use, including a shutdown menu that uses rofi.
+         You can ignore them if you wish.
+         
