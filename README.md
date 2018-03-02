@@ -13,6 +13,10 @@
 - compton
 
          Compton folder with compton config.
+         
+- rofi
+         
+         rofi folder with rofi config.
   
 - scripts
                   
