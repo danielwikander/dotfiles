@@ -8,7 +8,7 @@ This setup uses:
 
 [polybar](https://github.com/jaagr/polybar)
 
-[arc flatabulous dark grey](https://github.com/metasoftware/arc-grey-theme)
+[arc grey flatabulous dark](https://github.com/metasoftware/arc-grey-theme)
 
 [rofi](https://github.com/DaveDavenport/rofi)
 
