@@ -1,8 +1,11 @@
-# .config files for my current i3-wm setup.        
+                                             ╺┳┓ ┏━┓ ╺┳╸ ┏━┓
+                                              ┃┃ ┃ ┃  ┃  ┗━┓
+                                             ╺┻┛ ┗━┛  ╹  ┗━┛
+
 ![Empty](screenshots/1.png?raw=true "Empty")
 ![Terminals](screenshots/2.png?raw=true "Terminals")
          
-This setup uses: 
+Dependencies: 
 
 [i3-gaps](https://github.com/Airblader/i3)
 
@@ -22,6 +25,4 @@ This setup uses:
          rofi folder with rofi config.
          
          The scripts folder contains some scripts that
-         I personally use, including a shutdown menu that uses rofi.
-         You can ignore them if you wish.
-         
+         I use, including a shutdown menu that uses rofi.
