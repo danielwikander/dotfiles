@@ -1,74 +1,91 @@
-;#///////////////////////////////////////////////////////////////////////////#
-;#                                                                           #
-;#                                 Polybar						     		 #
-;# 								  .dotfile                              	 #
-;#                                 2018-02-20                                #
-;#                                                                           #
-;#///////////////////////////////////////////////////////////////////////////#
+;#//////////////////////#
+;#                      #
+;#  	Polybar         #
+;#      .dotfile        #
+;#      2018-02-20      #
+;#                      #
+;#//////////////////////#
 
-[colors]
-; From Xresources
-; background = ${xrdb:color0}
-; foreground = ${xrdb:color7}
-primary = ${xrdb:color3}
-secondary = ${xrdb:color5}
-
-; Static
-background = #D93a3934
-background-alt = #444
-foreground = #dfdfdf
-foreground-alt = #232c34
-alert = #bd2c40
-bluebg = #7cd0d6
-urgbg = #fc6a6a
-
-[bar/example]
-;monitor = ${env:MONITOR:HDMI-1}
-width = 935 ;1880
-height = 25
-offset-x = 20
-offset-y = 20
-;radius = 6.0
-fixed-center = true
-
-background = ${colors.background}
-foreground = ${colors.foreground}
-
-;line-size = 0
-;line-color = #f00
-;border-left-size = 20
-;border-bottom-size = 20
-border-size = 2
-border-color = #f1efe7
-
-
-padding-left = 0
-padding-right = 1
-module-margin-left = 1
-module-margin-right = 1
-
-font-0 = terminus:pixelsize=14
-font-1 = unifont:fontformat=truetype:size=10:antialias=false;0
-font-2 = siji:pixelsize=12
-
-modules-left = i3
-;modules-center = 
-modules-right = date volume memory cpu wlan battery
-
-tray-position = right
-tray-padding = 2
-;tray-transparent = true
-;tray-background = #0063ff
-
+[bar/bar]
 wm-restack = i3
 override-redirect = true
 
-cursor-click = pointer
-cursor-scroll = ns-resize
+background     = #292A29
+foreground     = #D8D6D7
 
-[module/xwindow]
-type = internal/xwindow
-label = %title:0:30:...%
+height         = 40
+width          = 60
+offset-x       = 32
+offset-y       = 152
+
+bottom         = false
+fixed-center   = true
+font-0 = terminus:pixelsize=14
+module-margin = 0
+
+modules-center = battery
+
+;wm-name        = i3
+enable-ipc     = true
+
+[module/display]
+type           = custom/text
+content        = pwr
+click-left     = lock
+click-right    = shutdown now
+
+
+[bar/bar1]
+inherit        = bar/bar
+background     = #292A29
+foreground     = #D8D6D7
+modules-center = volume
+width          = 95
+offset-y       = 112
+
+;[module/brit]
+;type           = custom/script
+;interval       = 5
+;exec           = ~/.config/polybar/brit
+
+
+[bar/bar2]
+inherit        = bar/bar
+background     = #292A29
+foreground     = #D8D6D7
+modules-center = wlan
+width          = 120
+offset-y       = 72
+
+
+;[module/alrt]
+;type           = custom/script
+;interval       = 5
+;exec           = ~/.config/polybar/alrt
+
+
+[bar/bar3]
+inherit        = bar/bar
+background     = #292A29
+foreground     = #D8D6D7
+modules-center = date
+width          = 155
+offset-y       = 32
+
+;[module/date]
+;type 	       = internal/date
+;interval       = 60
+;date           = %a
+;time           = %OH:%M
+;label          = %date% %time%
+
+;[module/bat]
+;type           = custom/script
+;interval       = 5
+;exec           = ~/.config/polybar/bat
+
+
+;///////////////////////////////////////////////////////////////
 
 [module/i3]
 type = internal/i3
@@ -77,33 +94,47 @@ format = <label-state> <label-mode>
 format-spacing = 0
 
 label-focused = %index%
-label-focused-padding = 2
-label-focused-margin = 0
+label-focused-padding = 1
+;label-focused-margin = 0
 label-focused-font = 3
-label-focused-foreground = #D93a3934
-label-focused-background = #e8f2ef
-label-focused-overline = #148ebe
-label-focused-underline = #148ebe
+label-focused-foreground = #e8e8e8
+;label-focused-background = #00000000
+;label-focused-overline = #00000000
+;label-focused-underline = #00000000
 
 label-unfocused = %index%
-label-unfocused-padding = 2
+label-unfocused-padding = 1
 label-unfocused-margin = 0
-label-unfocused-background = #D93a3934
-label-unfocused-foreground = #e8f2ef
-label-unfocused-overline = #c5c5c5
-label-unfocused-underline = #c5c5c5
+;label-unfocused-background = #00000000
+label-unfocused-foreground = #8c8c8c
+;label-unfocused-overline = #919191
+;label-unfocused-underline = #00000000
 label-unfocused-font = 3
 
 label-urgent = %index%
-label-urgent-padding = 2
+label-urgent-padding = 1
 label-urgent-margin = 0
 label-urgent-font = 3
-label-urgent-background = #F2777A
+;label-urgent-background = #00000000
+label-urgent-foreground = #F2777A
 
 label-visible = %index%
-label-visible-padding = 2
+label-visible-padding = 1
 label-visible-margin = 0
 label-visible-font = 3
+
+
+[module/date]
+type = internal/date
+interval = 5
+date = "%Y-%m-%d"
+date-alt = ""
+time = %H:%M
+time-alt = %H:%M
+format-prefix-foreground = #e8f2ef
+format-underline = #0a6cf5
+label = %date% %time%
+
 
 [module/cpu]
 type = internal/cpu
@@ -125,7 +156,7 @@ label = %percentage_used%%
 type = internal/network
 interface = wlo1
 interval = 3.0
-
+2
 format-connected = <ramp-signal> <label-connected>
 format-connected-underline = #9f78e1
 label-connected = %essid%
@@ -138,21 +169,6 @@ ramp-signal-2 = 
 ramp-signal-3 = 
 ramp-signal-4 = 
 ramp-signal-foreground = #e8f2ef
-
-[module/date]
-type = internal/date
-interval = 5
-
-date = "%Y-%m-%d"
-date-alt = "%Y-%m-%d"
-
-time = %H:%M
-time-alt = %H:%M:%S
-
-format-prefix-foreground = #e8f2ef
-format-underline = #0a6cf5
-
-label = %date% %time%
 
 [module/volume]
 type = internal/volume
@@ -184,17 +200,18 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/battery]
 type = internal/battery
+format-prefix = "bat "
 battery = BAT0
 adapter = ADP1
 full-at = 98
 
-format-charging = <animation-charging> <label-charging>
+format-charging = ~ <label-charging>
 format-charging-underline = #ffb52a
 
 format-discharging = <ramp-capacity> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
 
-format-full-prefix = " "
+format-full-prefix = "~"
 format-full-prefix-foreground = #e8f2ef
 format-full-underline = ${self.format-charging-underline}
 
@@ -203,21 +220,15 @@ ramp-capacity-1 = 
 ramp-capacity-2 = 
 ramp-capacity-foreground = #e8f2ef
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
+animation-charging-0 = "~"
+animation-charging-1 = "~"
+animation-charging-2 = "~"
 animation-charging-foreground = #e8f2ef
 animation-charging-framerate = 750
 
 [settings]
 screenchange-reload = true
-;compositing-background = xor
-;compositing-background = screen
-;compositing-foreground = source
-;compositing-border = over
 
 [global/wm]
 margin-top = 10
 margin-bottom = 10
-
-; vim:ft=dosini
