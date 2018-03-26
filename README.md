@@ -2,8 +2,7 @@
                                               ┃┃ ┃ ┃  ┃  ┗━┓
                                              ╺┻┛ ┗━┛  ╹  ┗━┛
 
-![Empty](screenshots/1.png?raw=true "Empty")
-![Terminals](screenshots/2.png?raw=true "Terminals")
+![Empty](screenshots/screen1.png?raw=true "Empty")
          
 Dependencies: 
 
