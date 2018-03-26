@@ -17,12 +17,3 @@ Dependencies:
 
 [compton](https://github.com/chjj/compton)
 
-         This repository includes the following content :
-
-         i3 folder with i3 config.
-         Polybar folder with polybar config. 
-         Compton folder with compton config.
-         rofi folder with rofi config.
-         
-         The scripts folder contains some scripts that
-         I use, including a shutdown menu that uses rofi.
