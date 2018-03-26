@@ -35,12 +35,24 @@ click-left     = lock
 click-right    = shutdown now
 
 
+[bar/bari3]
+inherit        = bar/bar
+height         = 40
+width          = 200
+background     = #00000000
+foreground     = #D8D6D7
+modules-left   = i3
+modules-center =
+fixed-center   = false
+offset-y       = 0
+offset-x       = 30
+
 [bar/bar1]
 inherit        = bar/bar
 background     = #292A29
 foreground     = #D8D6D7
 modules-center = volume
-width          = 95
+width          = 85
 offset-y       = 112
 
 ;[module/brit]
@@ -54,7 +66,7 @@ inherit        = bar/bar
 background     = #292A29
 foreground     = #D8D6D7
 modules-center = wlan
-width          = 120
+width          = 110
 offset-y       = 72
 
 
@@ -179,7 +191,7 @@ label-volume-foreground = ${root.foreground}
 
 format-muted-prefix = " "
 format-muted-foreground = #e8f2ef
-label-muted = sound muted
+label-muted = muted
 
 bar-volume-width = 10
 bar-volume-foreground-0 = #e8f2ef
@@ -200,7 +212,7 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/battery]
 type = internal/battery
-format-prefix = "bat "
+format-prefix = "bat"
 battery = BAT0
 adapter = ADP1
 full-at = 98
