@@ -11,13 +11,13 @@ rofi.width:                          35
 ! "Font to use" Set from: Default
 rofi.font:                           terminus 14
 ! "Color scheme for normal row" Set from: Default
-rofi.color-normal:                   #E644403d,#e8f2ef,#E644403d,#F2777A,#E644403d
+ rofi.color-normal:                   #292A29,#D8D6D7,#292A29,#D8D6D7,#292A29
 ! "Color scheme for urgent row" Set from: Default
-rofi.color-urgent:                   #F2777A,#dc322f,#eee8d5,#dc322f,#fdf6e3
+ rofi.color-urgent:                   #292A29,#D8D6D7,#eee8d5,#dc322f,#fdf6e3
 ! "Color scheme for active row" Set from: Default
-rofi.color-active:                    #F2777A,#F2777A,#F2777A,#e8f2ef,#e8f2ef
+ rofi.color-active:                    #292A29,#292A29,#292A29,#292A29,#292A29
 ! "Color scheme window" Set from: Default
-rofi.color-window:                    #44403d,#44403d
+ rofi.color-window:                    #292A29,#292A29
 ! "Border width" Set from: Default
 ! rofi.bw:                             1
 ! "Location on screen" Set from: Default
