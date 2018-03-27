@@ -3,6 +3,9 @@
                                              ╺┻┛ ┗━┛  ╹  ┗━┛
 
 ![Empty](screenshots/screen1.png?raw=true "Empty")
+![fetch](screenshots/3.png?raw=true "fetch")
+![polybar](screenshots/4.png?raw=true "polybar")
+                  
          
 Uses: 
 
