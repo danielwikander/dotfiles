@@ -7,33 +7,22 @@
 ;#//////////////////////#
 
 [bar/bar]
-wm-restack = i3
 override-redirect = true
-
+wm-restack     = i3
 background     = #292A29
 foreground     = #D8D6D7
-
 height         = 40
 width          = 60
 offset-x       = 32
 offset-y       = 152
-
 bottom         = false
 fixed-center   = true
-font-0 = terminus:pixelsize=14
-module-margin = 0
-
-modules-center = battery
-
-;wm-name        = i3
+font-0         = terminus:pixelsize=14
+module-margin  = 0
+modules-left   = battery
+modules-center = 
+padding-left   = 1
 enable-ipc     = true
-
-[module/display]
-type           = custom/text
-content        = pwr
-click-left     = lock
-click-right    = shutdown now
-
 
 [bar/bari3]
 inherit        = bar/bar
@@ -51,60 +40,39 @@ offset-x       = 30
 inherit        = bar/bar
 background     = #292A29
 foreground     = #D8D6D7
-modules-center = volume
+modules-center = 
+modules-left   = volume
 width          = 85
 offset-y       = 112
-
-;[module/brit]
-;type           = custom/script
-;interval       = 5
-;exec           = ~/.config/polybar/brit
-
+padding-left   = 2
 
 [bar/bar2]
+fixed-center   = false
 inherit        = bar/bar
 background     = #292A29
 foreground     = #D8D6D7
-modules-center = wlan
+modules-left   = wlan
+modules-center =
 width          = 110
 offset-y       = 72
-
-
-;[module/alrt]
-;type           = custom/script
-;interval       = 5
-;exec           = ~/.config/polybar/alrt
-
+padding-left   = 1
 
 [bar/bar3]
 inherit        = bar/bar
 background     = #292A29
 foreground     = #D8D6D7
-modules-center = date
+modules-left   = date
+modules-center =
 width          = 155
 offset-y       = 32
+padding-left   = 2
 
-;[module/date]
-;type 	       = internal/date
-;interval       = 60
-;date           = %a
-;time           = %OH:%M
-;label          = %date% %time%
-
-;[module/bat]
-;type           = custom/script
-;interval       = 5
-;exec           = ~/.config/polybar/bat
-
-
-;///////////////////////////////////////////////////////////////
+;///////////// MODULES & SETTINGS //////////////////////
 
 [module/i3]
 type = internal/i3
-
 format = <label-state> <label-mode>
 format-spacing = 0
-
 label-focused = %index%
 label-focused-padding = 1
 ;label-focused-margin = 0
@@ -113,7 +81,6 @@ label-focused-foreground = #e8e8e8
 ;label-focused-background = #00000000
 ;label-focused-overline = #00000000
 ;label-focused-underline = #00000000
-
 label-unfocused = %index%
 label-unfocused-padding = 1
 label-unfocused-margin = 0
@@ -122,19 +89,16 @@ label-unfocused-foreground = #8c8c8c
 ;label-unfocused-overline = #919191
 ;label-unfocused-underline = #00000000
 label-unfocused-font = 3
-
 label-urgent = %index%
 label-urgent-padding = 1
 label-urgent-margin = 0
 label-urgent-font = 3
 ;label-urgent-background = #00000000
 label-urgent-foreground = #F2777A
-
 label-visible = %index%
 label-visible-padding = 1
 label-visible-margin = 0
 label-visible-font = 3
-
 
 [module/date]
 type = internal/date
@@ -146,7 +110,6 @@ time-alt = %H:%M
 format-prefix-foreground = #e8f2ef
 format-underline = #0a6cf5
 label = %date% %time%
-
 
 [module/cpu]
 type = internal/cpu
@@ -168,13 +131,10 @@ label = %percentage_used%%
 type = internal/network
 interface = wlo1
 interval = 3.0
-2
 format-connected = <ramp-signal> <label-connected>
 format-connected-underline = #9f78e1
 label-connected = %essid%
-
 format-disconnected =
-
 ramp-signal-0 = 
 ramp-signal-1 = 
 ramp-signal-2 = 
@@ -184,15 +144,12 @@ ramp-signal-foreground = #e8f2ef
 
 [module/volume]
 type = internal/volume
-
 format-volume = <label-volume> 
 label-volume = vol %percentage%% 
 label-volume-foreground = ${root.foreground}
-
 format-muted-prefix = " "
 format-muted-foreground = #e8f2ef
 label-muted = muted
-
 bar-volume-width = 10
 bar-volume-foreground-0 = #e8f2ef
 bar-volume-foreground-1 = #e8f2ef
@@ -216,27 +173,28 @@ format-prefix = "bat"
 battery = BAT0
 adapter = ADP1
 full-at = 98
-
 format-charging = ~ <label-charging>
 format-charging-underline = #ffb52a
-
 format-discharging = <ramp-capacity> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
-
 format-full-prefix = "~"
 format-full-prefix-foreground = #e8f2ef
 format-full-underline = ${self.format-charging-underline}
-
 ramp-capacity-0 = 
 ramp-capacity-1 = 
 ramp-capacity-2 = 
 ramp-capacity-foreground = #e8f2ef
-
 animation-charging-0 = "~"
 animation-charging-1 = "~"
 animation-charging-2 = "~"
 animation-charging-foreground = #e8f2ef
 animation-charging-framerate = 750
+
+[module/display]
+type           = custom/text
+content        = pwr
+click-left     = lock
+click-right    = shutdown now
 
 [settings]
 screenchange-reload = true
