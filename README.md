@@ -2,10 +2,7 @@
                                               ┃┃ ┃ ┃  ┃  ┗━┓
                                              ╺┻┛ ┗━┛  ╹  ┗━┛
 ![fetch](screenshots/3.png?raw=true "fetch")
-![polybar](screenshots/4.png?raw=true "polybar")
-![dunst](screenshots/6.png?raw=true "dunst")
                   
-         
 Uses: 
 
 [i3-gaps](https://github.com/Airblader/i3)
