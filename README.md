@@ -14,5 +14,7 @@ Dependencies:
 
 [rofi](https://github.com/DaveDavenport/rofi)
 
+[dunst](https://github.com/dunst-project/dunst)
+
 [compton](https://github.com/chjj/compton)
 
