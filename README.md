@@ -4,7 +4,7 @@
 
 ![Empty](screenshots/screen1.png?raw=true "Empty")
          
-Dependencies: 
+Uses: 
 
 [i3-gaps](https://github.com/Airblader/i3)
 
