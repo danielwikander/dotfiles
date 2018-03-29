@@ -44,10 +44,10 @@ bindsym $mod+Shift+l move up
 bindsym $mod+Shift+odiaeresis move right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+Left move left 50px
+bindsym $mod+Shift+Down move down 50px
+bindsym $mod+Shift+Up move up 50px
+bindsym $mod+Shift+Right move right 50px
 
 # split in horizontal orientation
 bindsym $mod+h split h
@@ -128,16 +128,16 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym odiaeresis resize grow width 10 px or 10 ppt
+        bindsym j resize shrink width 30 px or 30 ppt
+        bindsym k resize grow height 30 px or 30 ppt
+        bindsym l resize shrink height 30 px or 30 ppt
+        bindsym odiaeresis resize grow width 30 px or 30 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 50 px or 50 ppt
+        bindsym Down resize grow height 50 px or 50 ppt
+        bindsym Up resize shrink height 50 px or 50 ppt
+        bindsym Right resize grow width 50 px or 50 ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -166,7 +166,7 @@ client.unfocused        $bordercolor     $bg     $fg  $bg       $bg
 client.urgent           $urgentcolor     $bg     $fg  $bg       $bg
 client.placeholder      $bordercolor     $bg     $fg  $bg       $bg
 
-client.background       $bg
+#client.background       $bg
 
 # Currently not in use, can be ignored.
 # INVISIBLE BAR FOR POLYBAR POSITIONING ONLY
@@ -198,9 +198,12 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 bindsym $mod+Shift+x exec i3lock --color 475263
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master 5%+; notify-send 'volume++'"
+bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master 5%-; notify-send 'volume--'"$
+bindsym XF86AudioMute exec "amixer -D pulse set Master 1+ toggle; notify-send 'sound muted'"
+#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume 
+#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # Screen brightness controls with notification
 bindsym XF86MonBrightnessUp exec "light -A 10; notify-send 'brightness up'" 
@@ -220,7 +223,7 @@ bindsym XF86AudioPrev exec playerctl previous
 # Startup
 exec_always --no-startup-id /home/daniel/.screenlayout/home2.sh
 exec_always --no-startup-id /usr/local/bin/soundfix.sh
-exec_always --no-startup-id feh --bg-scale /home/daniel/Pictures/wallpapers/sushi169.jpg
+exec_always --no-startup-id feh --bg-scale /home/daniel/.config/wall.png
 
 # Sets keyboard layout SE/US
 bindsym $mod+n exec "setxkbmap se"
