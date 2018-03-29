@@ -1,10 +1,10 @@
-#////////////////////////////////////////////////////////////////////////////#
-#                                                                            #
-#                                 i3                                         # 
-#                                .dotfile                                    #
-#                                 2018-02-19                                 #
-#                                                                            #
-#////////////////////////////////////////////////////////////////////////////#
+#/////////////////////////#
+#                         #
+#       i3                # 
+#       .dotfile          #
+#       2018-03-29        #
+#                         #
+#/////////////////////////#
 
 # Sets modkey alt 
 set $mod Mod1
@@ -17,6 +17,7 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
+for_window [class="Gnome-terminal"] floating enable
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -108,8 +109,8 @@ bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+0 move container to workspace $workspace10
 
 # startup executions
-exec --no-startup-id gnome-terminal $workspace1
-exec --no-startup-id chromium-browser $workspace2
+# exec --no-startup-id gnome-terminal $workspace1
+# exec --no-startup-id chromium-browser $workspace2
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -152,10 +153,11 @@ hide_edge_borders both
 # from the generated scheme.
 # NOTE: The '#f0f0f0' in the lines below is the color i3 will use if
 # it fails to get colors from Xresources.
-set_from_resource $fg i3wm.color7 #f0f0f0
-set_from_resource $bg i3wm.color2 #f0f0f0
+#set_from_resource $fg i3wm.color7 #f0f0f0
+#set_from_resource $bg i3wm.color2 #f0f0f0
 set $bordercolor #e8f2ef
 set $urgentcolor #F2777A
+set $grey       #8c8c8c
 
 # class                 border           backgr. text indicator child_border
 client.focused          $bordercolor     $bg     $fg  $bg       $bg
@@ -166,32 +168,32 @@ client.placeholder      $bordercolor     $bg     $fg  $bg       $bg
 
 client.background       $bg
 
+# Currently not in use, can be ignored.
 # INVISIBLE BAR FOR POLYBAR POSITIONING ONLY
 # Because of unfortunate limitations with i3 and polybar an invisible i3bar is needed
 # for the i3 windows to align with the polybar height.
-bar {
-    height 50
-    mode dock
-    position top
-    i3bar_command i3bar -t
-     colors {
-        # Whole color settings
-        background #00000000
-        statusline #00000000
-        separator  #00000000
+#bar {
+#    height 1
+#    mode dock
+#    position top
+#    i3bar_command i3bar -t
+#     colors {
+#        # Whole color settings
+#        background #00000000
+#        statusline #00000000
+#        separator  #00000000
 
-        # Type             border  background font
-        focused_workspace  #00000000 #00000000 #00000000
-        active_workspace   #00000000 #00000000 #00000000
-        inactive_workspace #00000000 #00000000 #00000000
-        urgent_workspace   #00000000 #00000000 #00000000
-     }
-}
+#        # Type             border  background font
+#        focused_workspace  #00000000 #00000000 #00000000
+#        active_workspace   #00000000 #00000000 #00000000
+#        inactive_workspace #00000000 #00000000 #00000000
+#        urgent_workspace   #00000000 #00000000 #00000000
+#     }
+#}
 
 # POLYBAR
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-# CUSTOM STUFF
 # Locks the screen
 bindsym $mod+Shift+x exec i3lock --color 475263
 
@@ -218,10 +220,7 @@ bindsym XF86AudioPrev exec playerctl previous
 # Startup
 exec_always --no-startup-id /home/daniel/.screenlayout/home2.sh
 exec_always --no-startup-id /usr/local/bin/soundfix.sh
-exec_always --no-startup-id feh --bg-scale /home/daniel/Pictures/wallpapers/sky.png
-exec_always --no-startup id exec wpg
-exec_always --no-startup-id home/daniel/.config/wpg/wp-init.sh
-#exec --no-startup-id nm-applet
+exec_always --no-startup-id feh --bg-scale /home/daniel/Pictures/wallpapers/sushi169.jpg
 
 # Sets keyboard layout SE/US
 bindsym $mod+n exec "setxkbmap se"
@@ -231,10 +230,8 @@ bindsym $mod+m exec "setxkbmap us"
 exec_always compton --config ~/.config/compton.conf -b -c
 
 # Gaps!
-gaps inner 10
+gaps inner 20
 gaps outer 10
 
 # Removes titlebar for gaps to work
 for_window [class="^.*"] border pixel 2
-
-
