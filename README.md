@@ -17,3 +17,4 @@ Uses:
 
 [compton](https://github.com/chjj/compton)
 
+[ranger](https://github.com/ranger/ranger)
