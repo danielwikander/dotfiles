@@ -157,7 +157,9 @@ hide_edge_borders both
 #set_from_resource $bg i3wm.color2 #f0f0f0
 set $bordercolor #e8f2ef
 set $urgentcolor #F2777A
-set $grey       #8c8c8c
+set $grey        #8c8c8c
+set $bg          #8c8c8c
+set $fg          #8c8c8c
 
 # class                 border           backgr. text indicator child_border
 client.focused          $bordercolor     $bg     $fg  $bg       $bg
@@ -199,7 +201,7 @@ bindsym $mod+Shift+x exec i3lock --color 475263
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master 5%+; notify-send 'volume++'"
-bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master 5%-; notify-send 'volume--'"$
+bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master 5%-; notify-send 'volume--'"
 bindsym XF86AudioMute exec "amixer -D pulse set Master 1+ toggle; notify-send 'sound muted'"
 #bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
 #bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume 
