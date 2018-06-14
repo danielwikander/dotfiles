@@ -56,7 +56,6 @@ bindsym $mod+v split v
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
-
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
@@ -72,16 +71,16 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # sets workspaces
-set $workspace1 "1:Terminals"
-set $workspace2 "2:Web"
-set $workspace3 "3:Editor"
-set $workspace4 "4:Dev"
-set $workspace5 "5:Other"
-set $workspace6 "6:Other"
-set $workspace7 "7:Other"
-set $workspace8 "8:Other"
-set $workspace9 "9:Other"
-set $workspace10 "10:Other"
+set $workspace1 "I"
+set $workspace2 "II"
+set $workspace3 "III"
+set $workspace4 "IV"
+set $workspace5 "V"
+set $workspace6 "VI"
+set $workspace7 "VII"
+set $workspace8 "VIII"
+set $workspace9 "IX"
+set $workspace10 "X"
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -123,14 +122,10 @@ bindsym $mod+Shift+e exec $HOME/.config/i3/scripts/shutdown_menu -c
 # resize window (you can also use the mouse)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 30 px or 30 ppt
-        bindsym j resize grow height 30 px or 30 ppt
-        bindsym k resize shrink height 30 px or 30 ppt
-        bindsym l resize grow width 30 px or 30 ppt
+        bindsym h resize shrink width 50 px or 50 ppt
+        bindsym j resize grow height 50 px or 50 ppt
+        bindsym k resize shrink height 50 px or 50 ppt
+        bindsym l resize grow width 50 px or 50 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 50 px or 50 ppt
@@ -194,7 +189,7 @@ client.urgent           $urgentcolor     $bg     $fg  $bordercolor       $border
 #}
 
 # POLYBAR
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id $HOME/.config/polybar/i3launch.sh
 
 # Locks the screen
 bindsym $mod+Shift+x exec i3lock --color 475263
@@ -248,9 +243,13 @@ bindsym $mod+g mode "$mode_gaps"
 mode "$mode_gaps" {
     bindsym 1 mode "default", gaps inner all set 20, gaps outer all set 10
     bindsym 2 mode "default", gaps inner all set 1, gaps outer all set 1
+    bindsym 3 mode "default", gaps inner all set 50, gaps outer all set 80
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
 
 # Removes titlebar for gaps to work
 for_window [class="^.*"] border pixel 2
+
+# Floats all java windows (for java development purposes)
+for_window [instance="sun-awt-X11-XFramePeer"] floating enable
