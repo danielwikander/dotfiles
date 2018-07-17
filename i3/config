@@ -166,21 +166,29 @@ client.urgent           $urgentcolor     $bg     $fg  $bordercolor       $border
 bindsym $mod+Shift+x exec i3lock --color 475263
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master 5%+; notify-send 'volume++'"
-bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master 5%-; notify-send 'volume--'"
-bindsym XF86AudioMute exec "amixer -D pulse set Master 1+ toggle; notify-send 'sound muted/resumed'"
-bindsym XF86AudioPlay exec "/home/daniel/.config/i3/scripts/cplay; notify-send 'play/pause'"
-bindsym XF86AudioNext exec "cmus-remote -n;notify-send 'next song'"
-bindsym XF86AudioPrev exec "cmus-remote -r;notify-send 'previous song'"
+#bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master 5%+; notify-send 'volume++'"
+#bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master 5%-; notify-send 'volume--'"
+#bindsym XF86AudioMute exec "amixer -D pulse set Master 1+ toggle; notify-send 'sound muted/resumed'"
+#bindsym XF86AudioPlay exec "/home/daniel/.config/i3/scripts/cplay; notify-send 'play/pause'"
+#bindsym XF86AudioNext exec "cmus-remote -n;notify-send 'next song'"
+#bindsym XF86AudioPrev exec "cmus-remote -r;notify-send 'previous song'"
+
+# experimental audiocontrol
+#bindsym XF86AudioLowerVolume exec --no-startup-id $HOME/scripts/volume_control.py down 5
+#bindsym XF86AudioRaiseVolume exec --no-startup-id $HOME/scripts/volume_control.py up 5
 
 # old pactl stuff, unused currently.
-#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume 
-#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume 
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # Screen brightness controls with notification
 bindsym XF86MonBrightnessUp exec "light -A 10; notify-send 'brightness up'" 
 bindsym XF86MonBrightnessDown exec "light -U 10; notify-send 'brightness down'" 
+
+# experimental screen brightness
+#bindsym XF86MonBrightnessDown exec --no-startup-id ${HOME}/scripts/backlight.sh -dec 10
+#bindsym XF86MonBrightnessUp exec --no-startup-id ${HOME}/scripts/backlight.sh -inc 10
 
 # Touchpad controls 
 exec_always --no-startup-id synclient VertEdgeScroll=0 HorizTwoFingerScroll=1 NaturalScrolling=1 VertScrollDelta=-120 HorizScrollDelta=-120 PalmDetect=1
@@ -204,7 +212,7 @@ bindsym $mod+n exec "setxkbmap se"
 bindsym $mod+m exec "setxkbmap us"
 
 # Compton
-exec_always compton --config ~/.config/compton.conf -b -c
+# exec_always compton --config ~/.config/compton.conf -b -c
 
 # Gaps!
 gaps inner 20
@@ -254,5 +262,28 @@ bar {
 
 # Experimental stuff
 bindsym $mod+y fullscreen disable; floating enable; resize set 600 400; sticky enable; move window to position 1940 20
-
 bindsym $mod+t exec --no-startup-id thunar
+
+# floating modes to prevent graphical glitches
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+
+for_window [class="(?i)gsimplecal"] floating enable, move position mouse, move down $height px
+for_window [class="(?i)qemu-system"] floating enable
+for_window [class="(?i)VirtualBox" title="(?i)Manager"] floating enable
+for_window [class="(?i)VirtualBox"] floating enable
+for_window [class="(?i)blueman"] floating enable
+for_window [class="(?i)pinentry"] floating enable
+for_window [class="(?i)nm-connection-editor"] floating enable
+
+for_window [instance="__scratchpad"] floating enable
+for_window [instance="__nmtui"] floating enable
+for_window [class="(?i)recordmydesktop"] floating enable
+
+for_window [class="(?i)pavucontrol"] floating enable, move position mouse
+for_window [class="(?i)pavucontrol" instance="pavucontrol-bar"] move down $height px
