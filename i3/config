@@ -1,7 +1,7 @@
 #
 #       i3
 #       .dotfile
-#       2018-03-29
+#       2018-07-17
 #
 
 # Sets modkey alt 
@@ -14,8 +14,8 @@ font pango:terminus 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
-for_window [class="Gnome-terminal"] floating enable
+bindsym $mod+Return exec urxvt 
+# for_window [class="urxvt"] floating enable
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -51,7 +51,7 @@ bindsym $mod+Shift+Right move right 50px
 # bindsym $mod+h split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+v split toggle
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -116,30 +116,25 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
-# shutdown menu
-bindsym $mod+Shift+e exec $HOME/.config/i3/scripts/shutdown_menu -c
+# shutdown menu (not functional without systemd & rofi)
+# bindsym $mod+Shift+e exec $HOME/.config/i3/scripts/shutdown_menu -c
 
-# resize window (you can also use the mouse)
+# resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-        bindsym h resize shrink width 50 px or 50 ppt
-        bindsym j resize grow height 50 px or 50 ppt
-        bindsym k resize shrink height 50 px or 50 ppt
-        bindsym l resize grow width 50 px or 50 ppt
-
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 50 px or 50 ppt
-        bindsym Down resize grow height 50 px or 50 ppt
-        bindsym Up resize shrink height 50 px or 50 ppt
-        bindsym Right resize grow width 50 px or 50 ppt
-
-        # back to normal: Enter or Escape
+        bindsym h resize grow width 5 px or 5 ppt
+        bindsym j resize shrink height 5 px or 5 ppt
+        bindsym k resize grow height 5 px or 5 ppt
+        bindsym l resize shrink width 5 px or 5 ppt
+       
+	bindsym Left resize grow width 5 px or 5 ppt
+        bindsym Down resize shrink height 5 px or 5 ppt
+        bindsym Up resize grow height 5 px or 5 ppt
+        bindsym Right resize shrink width 5 px or 5 ppt
         bindsym Return mode "default"
-        bindsym Escape mode "default"
+	bindsym Excape mode "default"
 }
-
-bindsym $mod+r mode "resize"
-
+bindsym $mod+r mode "resize" 
+       
 hide_edge_borders both
 
 # Set colors from Xresources
@@ -162,34 +157,10 @@ client.focused_inactive $bordercolor     $bg     $fg  $unfocused         $unfocu
 client.unfocused        $unfocused       $bg     $fg  $unfocused         $unfocused
 client.urgent           $urgentcolor     $bg     $fg  $bordercolor       $bordercolor
 # client.placeholder      $bordercolor     $bg     $fg  $bg       $bg
-
 # client.background       $bg
 
-# Currently not in use, can be ignored.
-# INVISIBLE BAR FOR POLYBAR POSITIONING ONLY
-# Because of unfortunate limitations with i3 and polybar an invisible i3bar is needed
-# for the i3 windows to align with the polybar height.
-#bar {
-#    height 1
-#    mode dock
-#    position top
-#    i3bar_command i3bar -t
-#     colors {
-#        # Whole color settings
-#        background #00000000
-#        statusline #00000000
-#        separator  #00000000
-
-#        # Type             border  background font
-#        focused_workspace  #00000000 #00000000 #00000000
-#        active_workspace   #00000000 #00000000 #00000000
-#        inactive_workspace #00000000 #00000000 #00000000
-#        urgent_workspace   #00000000 #00000000 #00000000
-#     }
-#}
-
 # POLYBAR
-exec_always --no-startup-id $HOME/.config/polybar/i3launch.sh
+#exec_always --no-startup-id $HOME/.config/polybar/i3launch.sh
 
 # Locks the screen
 bindsym $mod+Shift+x exec i3lock --color 475263
@@ -223,9 +194,10 @@ exec_always --no-startup-id synclient VertEdgeScroll=0 HorizTwoFingerScroll=1 Na
 #bindsym XF86AudioPrev exec playerctl previous
 
 # Startup
-exec_always --no-startup-id /home/daniel/.screenlayout/home2.sh
-exec_always --no-startup-id /usr/local/bin/soundfix.sh
-exec_always --no-startup-id feh --bg-scale /home/daniel/.config/wall.png
+# exec_always --no-startup-id feh --bg-scale /home/daniel/.config/wall.png
+
+# Screenshot 
+bindsym Print exec scrot 'Cheese_%a-%d%b%y_%H.%M.png' -e 'viewnior ~/$f'
 
 # Sets keyboard layout SE/US
 bindsym $mod+n exec "setxkbmap se"
@@ -251,5 +223,36 @@ mode "$mode_gaps" {
 # Removes titlebar for gaps to work
 for_window [class="^.*"] border pixel 2
 
-# Floats all java windows (for java development purposes)
-for_window [instance="sun-awt-X11-XFramePeer"] floating enable
+# Manjaro stuff & autostart
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id nitrogen --restore; sleep 1; compton -b
+exec --no-startup-id nm-applet
+exec --no-startup-id xfce4-power-manager
+exec --no-startup-id pamac-tray
+exec --no-startup-id clipit
+exec --no-startup-id xautolock -time 10 -locker blurlock
+exec_always --no-startup-id ff-theme-util
+exec_always --no-startup-id fix_xcursor
+
+# i3bar
+bar {
+	i3bar_command i3bar
+	status_command i3status
+	position bottom
+
+	bindsym button4 nop
+	bindsym button5	nop
+	
+	strip_workspace_numbers yes
+
+	colors {
+		background #202A2E
+		statusline #F9FAF9
+		separator  #454947
+	}
+}
+
+# Experimental stuff
+bindsym $mod+y fullscreen disable; floating enable; resize set 600 400; sticky enable; move window to position 1940 20
+
+bindsym $mod+t exec --no-startup-id thunar
