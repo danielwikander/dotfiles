@@ -1,27 +1,32 @@
 #
 #       i3
 #       .dotfile
-#       2018-07-17
+#	Daniel Wikander
 #
 
-# Sets modkey alt 
+# sets modkey to alt 
 set $mod Mod1
 
-# Font for window titles.
+# font for window titles.
 font pango:terminus 10
 
-# Use Mouse+$mod to drag floating windows to their wanted position
+# use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec urxvt 
-# for_window [class="urxvt"] floating enable
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start rofi (program launcher)
 bindsym $mod+d exec rofi -show run
+
+# launch exitmenu script
+# python /home/daniel/.config/scripts/i3-exit.py
+
+# bordersize
+default_border pixel 5
 
 # change focus
 bindsym $mod+h focus left
@@ -47,10 +52,7 @@ bindsym $mod+Shift+Down move down 50px
 bindsym $mod+Shift+Up move up 50px
 bindsym $mod+Shift+Right move right 50px
 
-# split in horizontal orientation
-# bindsym $mod+h split h
-
-# split in vertical orientation
+# change split orientation
 bindsym $mod+v split toggle
 
 # enter fullscreen mode for the focused container
@@ -71,16 +73,16 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # sets workspaces
-set $workspace1 "I"
-set $workspace2 "II"
-set $workspace3 "III"
-set $workspace4 "IV"
-set $workspace5 "V"
-set $workspace6 "VI"
-set $workspace7 "VII"
-set $workspace8 "VIII"
-set $workspace9 "IX"
-set $workspace10 "X"
+set $workspace1 "1"
+set $workspace2 "2"
+set $workspace3 "3"
+set $workspace4 "4"
+set $workspace5 "5"
+set $workspace6 "6"
+set $workspace7 "7"
+set $workspace8 "8"
+set $workspace9 "9"
+set $workspace10 "10"
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -106,10 +108,6 @@ bindsym $mod+Shift+8 move container to workspace $workspace8
 bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+0 move container to workspace $workspace10
 
-# startup executions
-# exec --no-startup-id gnome-terminal $workspace1
-# exec --no-startup-id chromium-browser $workspace2
-
 # reload the configuration file
 bindsym $mod+Shift+c reload
 
@@ -121,15 +119,15 @@ bindsym $mod+Shift+r restart
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        bindsym h resize grow width 5 px or 5 ppt
-        bindsym j resize shrink height 5 px or 5 ppt
-        bindsym k resize grow height 5 px or 5 ppt
-        bindsym l resize shrink width 5 px or 5 ppt
+        bindsym h resize shrink width 20 px or 20 ppt
+        bindsym j resize grow height 20 px or 20 ppt
+        bindsym k resize shrink height 20 px or 20 ppt
+        bindsym l resize grow width 20 px or 20 ppt
        
-	bindsym Left resize grow width 5 px or 5 ppt
-        bindsym Down resize shrink height 5 px or 5 ppt
-        bindsym Up resize grow height 5 px or 5 ppt
-        bindsym Right resize shrink width 5 px or 5 ppt
+	bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
         bindsym Return mode "default"
 	bindsym Excape mode "default"
 }
@@ -144,12 +142,12 @@ hide_edge_borders both
 # it fails to get colors from Xresources.
 #set_from_resource $fg i3wm.color7 #f0f0f0
 #set_from_resource $bg i3wm.color2 #f0f0f0
-set $bordercolor #888989
+set $bordercolor #CCCCCC
 set $urgentcolor #F2777A
 set $grey        #8c8c8c
 set $bg          #8c8c8c
 set $fg          #8c8c8c
-set $unfocused   #5c5e5d
+set $unfocused   #757575
 
 # class                 border           backgr. text indicator child_border
 client.focused          $bordercolor     $bg     $fg  $bordercolor       $bordercolor
@@ -159,50 +157,21 @@ client.urgent           $urgentcolor     $bg     $fg  $bordercolor       $border
 # client.placeholder      $bordercolor     $bg     $fg  $bg       $bg
 # client.background       $bg
 
-# POLYBAR
-#exec_always --no-startup-id $HOME/.config/polybar/i3launch.sh
-
 # Locks the screen
-bindsym $mod+Shift+x exec i3lock --color 475263
+bindsym $mod+Shift+x exec i3lock-fancy -g -t <Enter password to proceed.>
 
 # Pulse Audio controls
-#bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master 5%+; notify-send 'volume++'"
-#bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master 5%-; notify-send 'volume--'"
-#bindsym XF86AudioMute exec "amixer -D pulse set Master 1+ toggle; notify-send 'sound muted/resumed'"
-#bindsym XF86AudioPlay exec "/home/daniel/.config/i3/scripts/cplay; notify-send 'play/pause'"
-#bindsym XF86AudioNext exec "cmus-remote -n;notify-send 'next song'"
-#bindsym XF86AudioPrev exec "cmus-remote -r;notify-send 'previous song'"
-
-# experimental audiocontrol
-#bindsym XF86AudioLowerVolume exec --no-startup-id $HOME/scripts/volume_control.py down 5
-#bindsym XF86AudioRaiseVolume exec --no-startup-id $HOME/scripts/volume_control.py up 5
-
 # old pactl stuff, unused currently.
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume 
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 10%+ 
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 10%-  
+bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle
 
 # Screen brightness controls with notification
 bindsym XF86MonBrightnessUp exec "light -A 10; notify-send 'brightness up'" 
 bindsym XF86MonBrightnessDown exec "light -U 10; notify-send 'brightness down'" 
 
-# experimental screen brightness
-#bindsym XF86MonBrightnessDown exec --no-startup-id ${HOME}/scripts/backlight.sh -dec 10
-#bindsym XF86MonBrightnessUp exec --no-startup-id ${HOME}/scripts/backlight.sh -inc 10
-
-# Touchpad controls 
-exec_always --no-startup-id synclient VertEdgeScroll=0 HorizTwoFingerScroll=1 NaturalScrolling=1 VertScrollDelta=-120 HorizScrollDelta=-120 PalmDetect=1
-# toggle touchpad
-# bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh
-
-# old. Media player controls
-#bindsym XF86AudioPlay exec playerctl play
-#bindsym XF86AudioPause exec playerctl pause
-#bindsym XF86AudioNext exec playerctl next
-#bindsym XF86AudioPrev exec playerctl previous
-
 # Startup
-# exec_always --no-startup-id feh --bg-scale /home/daniel/.config/wall.png
+exec_always --no-startup-id feh --bg-scale /home/daniel/.config/wallpaper.jpg
 
 # Screenshot 
 bindsym Print exec scrot 'Cheese_%a-%d%b%y_%H.%M.png' -e 'viewnior ~/$f'
@@ -211,10 +180,7 @@ bindsym Print exec scrot 'Cheese_%a-%d%b%y_%H.%M.png' -e 'viewnior ~/$f'
 bindsym $mod+n exec "setxkbmap se"
 bindsym $mod+m exec "setxkbmap us"
 
-# Compton
-# exec_always compton --config ~/.config/compton.conf -b -c
-
-# Gaps!
+# Gaps
 gaps inner 20
 gaps outer 10
 
@@ -229,11 +195,10 @@ mode "$mode_gaps" {
 }
 
 # Removes titlebar for gaps to work
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 8
 
 # Manjaro stuff & autostart
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nitrogen --restore; sleep 1; compton -b
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
@@ -242,23 +207,9 @@ exec --no-startup-id xautolock -time 10 -locker blurlock
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 
-# i3bar
-bar {
-	i3bar_command i3bar
-	status_command i3status
-	position bottom
-
-	bindsym button4 nop
-	bindsym button5	nop
-	
-	strip_workspace_numbers yes
-
-	colors {
-		background #202A2E
-		statusline #F9FAF9
-		separator  #454947
-	}
-}
+# Bars n stuff
+exec_always --no-startup-id sh /home/daniel/.config/polybar/launch.sh &
+exec --no-startup-id compton -b &
 
 # Experimental stuff
 bindsym $mod+y fullscreen disable; floating enable; resize set 600 400; sticky enable; move window to position 1940 20
@@ -287,3 +238,7 @@ for_window [class="(?i)recordmydesktop"] floating enable
 
 for_window [class="(?i)pavucontrol"] floating enable, move position mouse
 for_window [class="(?i)pavucontrol" instance="pavucontrol-bar"] move down $height px
+
+# flaoting modes for applications
+for_window [class="(?i)Thunar"] floating enable
+for_window [class="(?i)URxvt"] floating enable
