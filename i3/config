@@ -119,15 +119,15 @@ bindsym $mod+Shift+r restart
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        bindsym h resize shrink width 20 px or 20 ppt
-        bindsym j resize grow height 20 px or 20 ppt
-        bindsym k resize shrink height 20 px or 20 ppt
-        bindsym l resize grow width 20 px or 20 ppt
+        bindsym h resize shrink width 25 px or 25 ppt
+        bindsym j resize grow height 25 px or 25 ppt
+        bindsym k resize shrink height 25 px or 25 ppt
+        bindsym l resize grow width 25 px or 25 ppt
        
-	bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+	bindsym Left resize shrink width 25 px or 25 ppt
+        bindsym Down resize grow height 25 px or 25 ppt
+        bindsym Up resize shrink height 25 px or 25 ppt
+        bindsym Right resize grow width 25 px or 25 ppt
         bindsym Return mode "default"
 	bindsym Excape mode "default"
 }
@@ -158,20 +158,16 @@ client.urgent           $urgentcolor     $bg     $fg  $bordercolor       $border
 # client.background       $bg
 
 # Locks the screen
-bindsym $mod+Shift+x exec i3lock-fancy -g -t <Enter password to proceed.>
+bindsym $mod+Shift+x exec blurlock &
 
 # Pulse Audio controls
-# old pactl stuff, unused currently.
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 10%+ 
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 10%-  
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 5%+ 
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 5%-  
 bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle
 
 # Screen brightness controls with notification
 bindsym XF86MonBrightnessUp exec "light -A 10; notify-send 'brightness up'" 
 bindsym XF86MonBrightnessDown exec "light -U 10; notify-send 'brightness down'" 
-
-# Startup
-exec_always --no-startup-id feh --bg-scale /home/daniel/.config/wallpaper.jpg
 
 # Screenshot 
 bindsym Print exec scrot 'Cheese_%a-%d%b%y_%H.%M.png' -e 'viewnior ~/$f'
@@ -197,7 +193,9 @@ mode "$mode_gaps" {
 # Removes titlebar for gaps to work
 for_window [class="^.*"] border pixel 8
 
-# Manjaro stuff & autostart
+# Startup stuff
+exec --no-startup-id bash ~/.config/scripts/screendetector.sh
+# Manjaro startup stuff
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
@@ -207,12 +205,19 @@ exec --no-startup-id xautolock -time 10 -locker blurlock
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 
-# Bars n stuff
+# Wallpaper setup
+# exec_always --no-startup-id feh --bg-scale --no-xinerama /home/daniel/.config/wallpaper.jpg
+# Startup
+exec_always --no-startup-id nitrogen --set-zoom-fill ~/.config/wallpaper.jpg &
+
+# Bar and compositor
 exec_always --no-startup-id sh /home/daniel/.config/polybar/launch.sh &
 exec --no-startup-id compton -b &
 
 # Experimental stuff
+# floating window that follows current workspace
 bindsym $mod+y fullscreen disable; floating enable; resize set 600 400; sticky enable; move window to position 1940 20
+# open thunar
 bindsym $mod+t exec --no-startup-id thunar
 
 # floating modes to prevent graphical glitches
