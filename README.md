@@ -1,7 +1,7 @@
                                                  ╺┳┓ ┏━┓ ╺┳╸ ┏━┓
                                                   ┃┃ ┃ ┃  ┃  ┗━┓
                                                  ╺┻┛ ┗━┛  ╹  ┗━┛
-![fetch](screenshots/dirty.png?raw=true "dirty")
+![fetch](screenshots/desktop.gif?raw=true "Empty terminal")
                   
 Uses: 
 
