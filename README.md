@@ -2,7 +2,9 @@
                                                   ┃┃ ┃ ┃  ┃  ┗━┓
                                                  ╺┻┛ ┗━┛  ╹  ┗━┛
 ![fetch](screenshots/desktop.gif?raw=true "Empty terminal")
-                  
+       
+My repository for storing my linux configuration files.
+
 Uses: 
 
 [i3-gaps](https://github.com/Airblader/i3)
