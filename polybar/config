@@ -33,7 +33,7 @@ modules-right =
 override-redirect = true
 wm-restack = i3
 
-width = 260
+width = 280
 height = 34
 fixed-center = true 
 offset-x = 830
@@ -65,10 +65,10 @@ modules-right =
 override-redirect = true
 wm-restack = i3
 
-width = 180
+width = 160
 height = 34
 fixed-center = true 
-offset-x = 1700
+offset-x = 1720
 offset-y = 40
 background = ${bar/left.background}
 foreground = ${bar/left.foreground}
@@ -163,7 +163,7 @@ adapter = AC
 poll-interval = 1
 
 format-full = bat <label-full>
-format-charging = bat ~<animation-charging> <label-charging>
+format-charging = bat ~<label-charging>
 format-discharging = bat <label-discharging>
 
 animation-charging-0 = :..
@@ -337,4 +337,3 @@ interval = 0.01
 
 
 ; vim:ft=dosini
-
