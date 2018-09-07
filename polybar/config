@@ -33,7 +33,7 @@ modules-right =
 override-redirect = true
 wm-restack = i3
 
-width = 280
+width = 290
 height = 34
 fixed-center = true 
 offset-x = 830
