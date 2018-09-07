@@ -1,7 +1,6 @@
 #
 #       i3
 #       .dotfile
-#	Daniel Wikander
 #
 
 # sets modkey to alt 
@@ -119,16 +118,17 @@ bindsym $mod+Shift+r restart
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        bindsym h resize shrink width 25 px or 25 ppt
-        bindsym j resize grow height 25 px or 25 ppt
-        bindsym k resize shrink height 25 px or 25 ppt
-        bindsym l resize grow width 25 px or 25 ppt
+    bindsym h resize shrink width 25 px or 25 ppt
+    bindsym j resize grow height 25 px or 25 ppt
+    bindsym k resize shrink height 25 px or 25 ppt
+    bindsym l resize grow width 25 px or 25 ppt
        
 	bindsym Left resize shrink width 25 px or 25 ppt
-        bindsym Down resize grow height 25 px or 25 ppt
-        bindsym Up resize shrink height 25 px or 25 ppt
-        bindsym Right resize grow width 25 px or 25 ppt
-        bindsym Return mode "default"
+    bindsym Down resize grow height 25 px or 25 ppt
+    bindsym Up resize shrink height 25 px or 25 ppt
+    bindsym Right resize grow width 25 px or 25 ppt
+    
+    bindsym Return mode "default"
 	bindsym Excape mode "default"
 }
 bindsym $mod+r mode "resize" 
@@ -159,7 +159,7 @@ client.urgent           $urgentcolor     $bg     $fg  $bordercolor       $border
 # client.background       $bg
 
 # Locks the screen
-bindsym $mod+Shift+x exec blurlock &
+bindsym $mod+Shift+x exec --no-startup-id blurlock &
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 5%+ 
