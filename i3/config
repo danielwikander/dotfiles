@@ -142,7 +142,8 @@ hide_edge_borders both
 # it fails to get colors from Xresources.
 #set_from_resource $fg i3wm.color7 #f0f0f0
 #set_from_resource $bg i3wm.color2 #f0f0f0
-set $bordercolor #CCCCCC
+# set $bordercolor #CCCCCC
+set $bordercolor #DEE1E6
 set $urgentcolor #F2777A
 set $grey        #8c8c8c
 set $bg          #8c8c8c
@@ -166,8 +167,8 @@ bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 5%-
 bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle
 
 # Screen brightness controls with notification
-bindsym XF86MonBrightnessUp exec "light -A 10; notify-send 'brightness up'" 
-bindsym XF86MonBrightnessDown exec "light -U 10; notify-send 'brightness down'" 
+bindsym XF86MonBrightnessUp exec --no-startup-id "light -A 10; notify-send 'brightness up'" 
+bindsym XF86MonBrightnessDown exec --no-startup-id "light -U 10; notify-send 'brightness down'" 
 
 # Screenshot 
 bindsym Print exec scrot 'Cheese_%a-%d%b%y_%H.%M.png' -e 'viewnior ~/$f'
