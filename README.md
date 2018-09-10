@@ -3,7 +3,7 @@
                                                  ╺┻┛ ┗━┛  ╹  ┗━┛
 ![fetch](screenshots/desktop.gif?raw=true "Empty terminal")
        
-My repository for storing my linux configuration files.
+My linux configuration repository.
 
 Uses: 
 
