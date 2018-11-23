@@ -14,10 +14,9 @@ XTerm*faceSize:          11
 XTerm*reverseVideo:      on
 XTerm*selectToClipboard: true
 
-! ------------------------------------------------------------------------------
+! --------------------------------------------------------------------------
 ! Colour Configuration
-! ------------------------------------------------------------------------------
-
+! --------------------------------------------------------------------------
 ! special
 *.foreground:   #a2a2a2
 *.background:   #292929
@@ -55,56 +54,23 @@ XTerm*selectToClipboard: true
 *.color7:       #cfcfcf
 *.color15:      #ffffff
 
-! special
-!*.foreground:   #c7ccd1
-!*.background:   #1c2023
-!*.cursorColor:  #c7ccd1
-
-! black
-!*.color0:       #1c2023
-!*.color8:       #747c84
-
-! red
-!*.color1:       #c7ae95
-!*.color9:       #c7ae95
-
-! green
-!*.color2:       #95c7ae
-!*.color10:      #95c7ae
-
-! yellow
-!*.color3:       #aec795
-!*.color11:      #aec795
-
-! blue
-!*.color4:       #ae95c7
-!*.color12:      #ae95c7
-
-! magenta
-!*.color5:       #c795ae
-!*.color13:      #c795ae
-
-! cyan
-!*.color6:       #95aec7
-!*.color14:      #95aec7
-
-! white
-!*.color7:       #c7ccd1
-!*.color15:      #f3f4f5
-
 Xcursor.theme: xcursor-breeze-snow
 Xcursor.size:                     0
 
-! ------------------------------------------------------------------------------
+! --------------------------------------------------------------------------
 ! Rofi configs
-! ------------------------------------------------------------------------------
+! --------------------------------------------------------------------------
 
 rofi.color-enabled: true
-rofi.color-window: #2e3440, #2e3440, #2e3440
-rofi.color-normal: #2e3440, #d8dee9, #2e3440, #2e3440, #bf616a
-rofi.color-active: #2e3440, #b48ead, #2e3440, #2e3440, #93e5cc
-rofi.color-urgent: #2e3440, #ebcb8b, #2e3440, #2e3440, #ebcb8b
+rofi.color-window: #EEF4F8, #EEF4F8, #EEF4F8
+rofi.color-normal: #EEF4F8, #38383A, #EEF4F8, #EEF4F8, #D2A4A8
+rofi.color-active: #EEF4F8, #b48ead, #EEF4F8, #EEF4F8, #93e5cc
+rofi.color-urgent: #EEF4F8, #ebcb8b, #EEF4F8, #EEF4F8, #ebcb8b
+rofi.width: 300
+rofi.lines: 8
+rofi.font: terminus 14
 rofi.modi: run
+rofi.hide-scrollbar: true
 
 ! URxvt.font:                       9x15,xft:TerminessTTFNerdFontMono
 
@@ -115,7 +81,8 @@ URxvt.bold.font: -xos4-terminus-bold-r-normal--16-160-72-72-c-80-iso10646-1
 
 URxvt.depth:                      32
 URxvt.background:                 [100]#263238
-URxvt*internalBorder: 		  4
+!URxvt.background:                 [100]#222222
+URxvt*internalBorder: 		      4
 URxvt*scrollBar:                  false
 URxvt*mouseWheelScrollPage:       false
 URxvt*cursorBlink:                true
