@@ -9,6 +9,6 @@ set wildmenu        " Visual autocomplete for command menu
 set showmatch       " Hightlight matching { } 
 set incsearch       " Incremental search, searches as characters are entered
 set hlsearch        " Highlights matches in search
-remap <leader><space> :nohlsearch<CR> " Removes search highlight when pressing space
-
-
+set clipboard=unnamedplus " Sets the clipboard to system clipboard
+set smartindent     " 
+set shiftwidth=4    "
