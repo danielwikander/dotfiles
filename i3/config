@@ -21,11 +21,11 @@ bindsym $mod+Shift+q kill
 # start rofi (program launcher)
 bindsym $mod+d exec rofi -show run
 
-# launch exitmenu script
-# python /home/daniel/.config/scripts/i3-exit.py
+# rofi systemmenu script
+bindsym $mod+shift+e exec sh /home/daniel/.config/scripts/rofisystemmenu.sh
 
 # bordersize
-default_border pixel 5
+default_border pixel 4
 
 # change focus
 bindsym $mod+h focus left
@@ -58,18 +58,18 @@ bindsym $mod+v split toggle
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
+#bindsym $mod+s layout stacking
+#bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+w floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+w focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+# bindsym $mod+a focus parent
 
 # sets workspaces
 set $workspace1 "1"
@@ -113,25 +113,22 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
-# shutdown menu (not functional without systemd & rofi)
-# bindsym $mod+Shift+e exec $HOME/.config/i3/scripts/shutdown_menu -c
-
-# resize window (you can also use the mouse for that)
 mode "resize" {
-    bindsym h resize shrink width 25 px or 25 ppt
-    bindsym j resize grow height 25 px or 25 ppt
-    bindsym k resize shrink height 25 px or 25 ppt
-    bindsym l resize grow width 25 px or 25 ppt
+    bindsym h resize shrink width 40px or 10ppt
+    bindsym j resize grow height 40px or 10ppt 
+    bindsym k resize shrink height 40px or 10ppt
+    bindsym l resize grow width 40px or 10ppt
        
-	bindsym Left resize shrink width 25 px or 25 ppt
-    bindsym Down resize grow height 25 px or 25 ppt
-    bindsym Up resize shrink height 25 px or 25 ppt
-    bindsym Right resize grow width 25 px or 25 ppt
+	bindsym Left resize shrink width 40px or 10 ppt
+    bindsym Down resize grow height 40px or 10ppt 
+    bindsym Up resize shrink height 40px or 10ppt
+    bindsym Right resize grow width 40px or 10ppt
     
     bindsym Return mode "default"
-	bindsym Excape mode "default"
+	bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize" 
+
        
 hide_edge_borders both
 
@@ -159,7 +156,7 @@ client.urgent           $urgentcolor     $bg     $fg  $bordercolor       $border
 # client.background       $bg
 
 # Locks the screen
-bindsym $mod+Shift+x exec --no-startup-id blurlock &
+bindsym $mod+Shift+x exec --no-startup-id betterlockscreen -l dimblur &
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 5%+ 
@@ -184,32 +181,38 @@ gaps outer 10
 set $mode_gaps Toggle gaps: (1) on (2) off
 bindsym $mod+g mode "$mode_gaps"
 mode "$mode_gaps" {
-    bindsym 1 mode "default", gaps inner all set 20, gaps outer all set 10
-    bindsym 2 mode "default", gaps inner all set 1, gaps outer all set 1
-    bindsym 3 mode "default", gaps inner all set 50, gaps outer all set 80
+    bindsym 1 mode "default", gaps inner all set 1, gaps outer all set 1
+    bindsym 2 mode "default", gaps inner all set 10, gaps outer all set 5
+    bindsym 3 mode "default", gaps inner all set 20, gaps outer all set 10
+    bindsym 4 mode "default", gaps inner all set 50, gaps outer all set 80
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
+
+# Smartborder (removes border if it's the only window on the workspace)
+smart_borders on
 
 # Removes titlebar for gaps to work
 for_window [class="^.*"] border pixel 8
 
 # Startup stuff
-exec --no-startup-id bash ~/.config/scripts/screendetector.sh
+exec_always --no-startup-id bash ~/.config/scripts/screendetector.sh &
+exec_always --no-startup-id xmodmap ~/.Xmodmap & 
+  
 # Manjaro startup stuff
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nm-applet
-exec --no-startup-id xfce4-power-manager
-exec --no-startup-id pamac-tray
-exec --no-startup-id clipit
-exec --no-startup-id xautolock -time 10 -locker blurlock
-exec_always --no-startup-id ff-theme-util
-exec_always --no-startup-id fix_xcursor
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+exec --no-startup-id nm-applet &
+exec --no-startup-id xfce4-power-manager &
+exec --no-startup-id pamac-tray &
+exec --no-startup-id clipit &
+# exec --no-startup-id xautolock -time 10 -locker blurlock
+exec_always --no-startup-id ff-theme-util &
+exec_always --no-startup-id fix_xcursor &
 
 # Wallpaper setup
 # exec_always --no-startup-id feh --bg-scale --no-xinerama /home/daniel/.config/wallpaper.jpg
 # Startup
-exec_always --no-startup-id nitrogen --set-zoom-fill ~/.config/wallpaper.jpg &
+ exec_always --no-startup-id nitrogen --set-zoom-fill ~/.config/wallpaper.jpg &
 
 # Bar and compositor
 exec_always --no-startup-id sh /home/daniel/.config/polybar/launch.sh &
@@ -219,7 +222,7 @@ exec --no-startup-id compton -b &
 # floating window that follows current workspace
 bindsym $mod+y fullscreen disable; floating enable; resize set 600 400; sticky enable; move window to position 1940 20
 # open thunar
-bindsym $mod+t exec --no-startup-id thunar
+bindsym $mod+t exec --no-startup-id thunar &
 
 # floating modes to prevent graphical glitches
 for_window [window_role="pop-up"] floating enable
