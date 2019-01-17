@@ -22,7 +22,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec rofi -show run
 
 # rofi systemmenu script
-bindsym $mod+shift+e exec sh /home/daniel/.config/scripts/rofisystemmenu.sh
+bindsym $mod+shift+e exec sh ~/.config/scripts/rofisystemmenu.sh
 
 # bordersize
 default_border pixel 4
@@ -52,7 +52,7 @@ bindsym $mod+Shift+Up move up 50px
 bindsym $mod+Shift+Right move right 50px
 
 # change split orientation
-bindsym $mod+v split toggle
+bindsym $mod+a split toggle
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -210,12 +210,12 @@ exec_always --no-startup-id ff-theme-util &
 exec_always --no-startup-id fix_xcursor &
 
 # Wallpaper setup
-# exec_always --no-startup-id feh --bg-scale --no-xinerama /home/daniel/.config/wallpaper.jpg
+# exec_always --no-startup-id feh --bg-scale --no-xinerama ~/.config/wallpaper.jpg
 # Startup
  exec_always --no-startup-id nitrogen --set-zoom-fill ~/.config/wallpaper.jpg &
 
 # Bar and compositor
-exec_always --no-startup-id sh /home/daniel/.config/polybar/launch.sh &
+exec_always --no-startup-id sh ~/.config/polybar/launch.sh &
 exec --no-startup-id compton -b &
 
 # Experimental stuff
@@ -249,5 +249,5 @@ for_window [class="(?i)pavucontrol"] floating enable, move position mouse
 for_window [class="(?i)pavucontrol" instance="pavucontrol-bar"] move down $height px
 
 # flaoting modes for applications
-for_window [class="(?i)Thunar"] floating enable
-for_window [class="(?i)URxvt"] floating enable
+# for_window [class="(?i)Thunar"] floating enable
+# for_window [class="(?i)URxvt"] floating enable
