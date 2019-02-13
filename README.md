@@ -3,15 +3,15 @@
                                                  ╺┻┛ ┗━┛  ╹  ┗━┛
       
 My linux configuration repository.
+The repository contains two separate configurations, one for i3wm and one for bspwm.
 
-bspwm
+[bspwm](https://github.com/baskerville/bspwm)
 ![fetch](screenshots/bspwmdesktop.gif?raw=true "bspwm Desktop")
-i3-gaps
+[i3-gaps](https://www.github.com/Airblader/i3)
 ![fetch](screenshots/i3desktop.gif?raw=true "i3 Desktop")
- 
-Uses: 
 
-[i3-gaps](https://github.com/Airblader/i3)
+ 
+In addition to the window manager configs, the repository contains configurations for the following programs: 
 
 [polybar](https://github.com/jaagr/polybar)
 
