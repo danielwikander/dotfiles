@@ -1,10 +1,14 @@
                                                  ╺┳┓ ┏━┓ ╺┳╸ ┏━┓
                                                   ┃┃ ┃ ┃  ┃  ┗━┓
                                                  ╺┻┛ ┗━┛  ╹  ┗━┛
-![fetch](screenshots/desktop.gif?raw=true "Empty terminal")
-       
+      
 My linux configuration repository.
 
+bspwm
+![fetch](screenshots/bspwmdesktop.gif?raw=true "bspwm Desktop")
+i3-gaps
+![fetch](screenshots/i3desktop.gif?raw=true "i3 Desktop")
+ 
 Uses: 
 
 [i3-gaps](https://github.com/Airblader/i3)
