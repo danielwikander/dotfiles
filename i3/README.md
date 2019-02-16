@@ -1,6 +1,6 @@
 i3
 
-![fetch](./screenshots/i3desktop.gif?raw=true "i3 Desktop")
+![fetch](../screenshots/i3desktop.gif?raw=true "i3 Desktop")
  
 Uses: 
 
