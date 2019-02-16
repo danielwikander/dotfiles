@@ -1,7 +1,7 @@
       
 bspwm
 
-![fetch](./screenshots/bspwmdesktop.gif?raw=true "bspwm Desktop")
+![fetch](../screenshots/bspwmdesktop.gif?raw=true "bspwm Desktop")
  
 Uses: 
 
