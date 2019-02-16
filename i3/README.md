@@ -1,4 +1,4 @@
-i3
+## i3
 
 ![fetch](../screenshots/i3desktop.gif?raw=true "i3 Desktop")
  
