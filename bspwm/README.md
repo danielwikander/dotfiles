@@ -1,4 +1,4 @@
-## bspwm
+## [bspwm](https://github.com/baskerville/bspwm)
 
 ![fetch](../screenshots/bspwmdesktop.gif?raw=true "bspwm Desktop")
  
