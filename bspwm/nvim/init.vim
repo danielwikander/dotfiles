@@ -1,4 +1,4 @@
-" NEOVIM CONFIG "
+" ===                           PLUGIN SETUP                               === "
 
 " Get vim-plug
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
@@ -9,7 +9,7 @@ endif
 
 " vim-plug plugins
 call plug#begin('~/.vim/plugged')
-Plug 'morhetz/gruvbox'
+Plug 'gruvbox-community/gruvbox'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
@@ -18,12 +18,12 @@ Plug 'junegunn/fzf', { 'dir': '~/.config/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'liuchengxu/vista.vim'
 Plug 'scrooloose/nerdcommenter'
+Plug 'itchyny/lightline.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'Shougo/echodoc.vim'
 call plug#end()
 
-" Map leader to space
-nnoremap <space> <Nop>
-map <space> <leader>
-
+" == GOYO AND LIMELIGHT == "
 " Goyo and Limelight integration
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
@@ -34,47 +34,68 @@ let g:limelight_conceal_ctermfg = 243
 " Set Goyo hotkey
 nmap <silent> <leader>g :Goyo<CR>
 
-" Move lines up or down
-nmap <leader>k :m .-2<CR>==
-nmap <leader>j :m .+1<CR>==
-vmap <leader>k :m-2<CR>gv=gv
-vmap <leader>j :m'>+<CR>gv=gv
+" Start echodoc on startup & use floating windows
+let g:echodoc_enable_at_startup = 1
+let g:echodoc#type = 'floating'
+highlight link EchoDocFloat Pmenu
 
-" Vista sidebar settings
-nmap <silent> ö :Vista!!<CR>
-let g:vista_sidebar_width = 30
-let g:vista_close_on_jump = 1
-let g:vista#renderer#enable_icon = 0
-
-" Ripgrep search
-command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+" ===                           EDITING OPTIONS                            === "
 
 " Disable shada 
 set shada="NONE"
 
 " General vim settings
 set number          " Linenumbers
-set relativenumber  " Relative linenumbers 
+"set relativenumber  " Relative linenumbers 
 syntax enable       " Syntax highlighting
-set tabstop=4       " Number of visual spaces per tab
-set softtabstop=4   " Number of spaces created when editing in a tab
 set wildmenu        " Visual autocomplete for command menu
 set showmatch       " Hightlight matching { } 
 set clipboard=unnamedplus " Sets the clipboard to system clipboard
 set smartindent     " 
-set shiftwidth=4    "
+set tabstop=4       " Number of visual spaces per tab
+set softtabstop=4   " Number of spaces created when editing in a tab
+set shiftwidth=4    
+set expandtab       " Insert spaces when tab is pressed
+set smarttab
+set nowrap          " Dont wrap text
+set scrolloff=8     " Screen boundary padding
+set cmdheight=1     " Commandline height
+"set termguicolors   " Enable true color support
+set confirm         " Confirm before leaving unwritten buffer
 colorscheme gruvbox "
+
+" Map leader to space
+nnoremap <space> <Nop>
+map <space> <leader>
+
+" Move lines up or down
+nmap <leader>k :m .-2<CR>==
+nmap <leader>j :m .+1<CR>==
+vmap <leader>k :m-2<CR>gv=gv
+vmap <leader>j :m'>+<CR>gv=gv
+
+" Switch between buffers
+nmap <silent> <leader>ä :bnext<CR>
+nmap <silent> <leader>ö :bprev<CR>
+nmap <silent> <leader>' :Buffers<CR>
+
+" Vista sidebar settings
+nmap <silent> å :Vista!!<CR>
+let g:vista_sidebar_width = 30
+let g:vista_close_on_jump = 1
+let g:vista#renderer#enable_icon = 0
+
+" Ripgrep search
+map <leader>e :Rg<CR>
+"map <leader>e :GFiles<CR>
 
 " --- coc plugin config --- "
 " if hidden is not set, TextEdit might fail.
-set hidden
+set hidden   " Allows hiding buffers 
 
-" Some server have issues with backup files, see #649
+" coc has issues with backups
 set nobackup
 set nowritebackup
-
-" Better display for messages
-" set cmdheight=2
 
 " Smaller updatetime for CursorHold & CursorHoldI
 set updatetime=250
@@ -130,7 +151,7 @@ endfunction
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Remap for rename current word
-nmap <leader>rn <Plug>(coc-rename)
+nmap <leader>r  <Plug>(coc-rename)
 
 " Remap for format selected region
 vmap <leader>f  <Plug>(coc-format-selected)
@@ -163,7 +184,7 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " Show all diagnostics
 nnoremap <silent> <leader>z  :<C-u>CocList diagnostics<cr>
 " Manage extensions
-nnoremap <silent> <leader>e  :<C-u>CocList extensions<cr>
+"nnoremap <silent> <leader>e  :<C-u>CocList extensions<cr>
 " Show commands
 "nnoremap <silent> <leader>c  :<C-u>CocList commands<cr>
 " Find symbol of current document
@@ -176,3 +197,17 @@ nnoremap <silent> <leader>o  :<C-u>CocList outline<cr>
 "nnoremap <silent> <leader>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 "nnoremap <silent> <leader>p  :<C-u>CocListResume<CR>
+
+" Lightline config
+set noshowmode " Removes standard --INSERT-- 
+let g:lightline = {
+      \ 'colorscheme': 'gruvbox',
+	  \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'cocstatus', 'readonly', 'filename', 'modified'] ]
+	  \ },
+	  \ 'component_function': {
+      \   'gitbranch': 'fugitive#head',
+      \   'cocstatus': 'coc#status'
+      \ },
+      \ }

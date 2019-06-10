@@ -1,10 +1,20 @@
 {
+    "suggest.echodocSupport": true,
+    "suggest.maxCompleteItemCount": 20,
+    "coc.preferences.formatOnSaveFiletypes": ["javascript", "typescript", "typescriptreact", "json", "javascriptreact"],
+    "eslint.filetypes": ["javascript", "typescript", "typescriptreact", "javascriptreact"],
+    "tsserver.log": "verbose",
+    "tsserver.trace.server": "verbose",
+    "diagnostic.errorSign": "•",
+    "diagnostic.warningSign": "•",
+    "diagnostic.infoSign": "•",
+
 	"languageserver": {
-   "ccls": {
-     "command": "ccls",
-     "filetypes": ["c", "cpp", "objc", "objcpp"],
-     "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
-     "initializationOptions": {
+        "ccls": {
+        "command": "ccls",
+        "filetypes": ["c", "cpp", "objc", "objcpp"],
+         "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
+        "initializationOptions": {
         "cache": {
           "directory": "/tmp/ccls"
         }
