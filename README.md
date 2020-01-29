@@ -2,6 +2,8 @@
                                                   ┃┃ ┃ ┃  ┃  ┗━┓
                                                  ╺┻┛ ┗━┛  ╹  ┗━┛
       
+:exclamation: This repository is no longer being updated. Up to date config using [stow](https://www.gnu.org/software/stow/) is available [here](https://github.com/danielwikander/dotfilesstow). :exclamation:
+
 My linux configuration repository.
 The repository contains two separate configurations, one for i3wm and one for bspwm.
 
